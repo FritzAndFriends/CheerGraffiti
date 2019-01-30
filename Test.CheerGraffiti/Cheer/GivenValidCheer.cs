@@ -16,7 +16,8 @@ namespace Test.CheerGraffiti.Cheer
 		[InlineData("// Cheer 181 magnus10 11/3/19", 2019, 11, 3)]
 		[InlineData("// Cheer 181 CleverUser123 January 29, 2019", 2019, 1, 29)]
 		[InlineData("// Cheer 181 420i 29/01/19", 2019, 1, 29)]
-		// [InlineData("// restarted cheered 500 on November 29, 2018", 2018, 11, 29)]
+		[InlineData("// restarted cheered 500 on November 29, 2018", 2018, 11, 29)]
+		[InlineData("// Cheer 181 8675309 29/01/19", 2019, 1, 29)]
 		public void ShouldParseDate(string validCheer, int year, int month, int day)
 		{
 
@@ -39,6 +40,8 @@ namespace Test.CheerGraffiti.Cheer
 		[InlineData("// Cheer 181 420i 29/01/19", "420i")]
 		[InlineData("// Cheer 181 8675309 29/01/19", "8675309")]
 		[InlineData("// restarted cheered 500 on November 29, 2018", "restarted")]
+		[InlineData("// Cheer 666 ViewerName666 29/01/19", "ViewerName666")]
+		[InlineData("// ViewerName666 cheered 666 29/01/19", "ViewerName666")]
 		public void ShouldParseViewer(string validCheer, string expectedViewer)
 		{
 
@@ -57,6 +60,10 @@ namespace Test.CheerGraffiti.Cheer
 		[InlineData("// Cheer 181 magnus10 29/01/19", 181)]
 		[InlineData("// Cheer 181 CleverUser123 29/01/19", 181)]
 		[InlineData("// Cheer 181 420i 29/01/19", 181)]
+		[InlineData("// restarted cheered 500 on November 29, 2018", 500)]
+		[InlineData("// Cheer 181 8675309 29/01/19", 181)]
+		[InlineData("// Cheer 666 ViewerName666 29/01/19", 666)]
+		[InlineData("// ViewerName666 cheered 666 29/01/19", 666)]
 		public void ShouldParseValue(string validCheer, int expectedValue)
 		{
 
