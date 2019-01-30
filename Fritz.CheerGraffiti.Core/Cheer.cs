@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Fritz.CheerGraffiti.Core
@@ -15,27 +16,47 @@ namespace Fritz.CheerGraffiti.Core
 
 		public Cheer(string cheerText)
 		{
-
 			cheerText = cheerText.Trim().Replace("// ", "");
 			cheerText = cheerText.Trim().Replace("* ", "");
 
+			cheerText = cheerText.Replace("cheered", "").Replace("Cheered", "");
 			cheerText = cheerText.Replace("cheer", "").Replace("Cheer", "");
-			Bits = int.Parse(BitsRegex.Match(cheerText).Captures[0].Value);
+			var bitsCapture = BitsRegex.Match(cheerText).Captures[0];
+			Bits = int.Parse(bitsCapture.Value);
 
-			cheerText = cheerText.Replace(Bits.ToString(), "");
+			//remove only bits and ignore same number in viewerName
+			var startIndexOfBits = bitsCapture.Index;
+			var sb = new StringBuilder(cheerText);
+			sb.Remove(startIndexOfBits, bitsCapture.Value.Length);
+			cheerText = sb.ToString();
+
 			ViewerName = ViewerNameRegex.Match(cheerText).Captures[0].Value;
 
 			cheerText = cheerText.Replace(ViewerName, "").Trim();
-			if (DateTime.TryParseExact(cheerText, "d/M/yy", null, System.Globalization.DateTimeStyles.None, out var thisDate))
+			cheerText = cheerText.Replace("on ", "");
+			//"11/3/19" -> November 3rd 2019
+			if (DateTime.TryParseExact(cheerText, "MM/d/yy", new System.Globalization.CultureInfo("en-US"), System.Globalization.DateTimeStyles.None, out var americanNonPaddedDayDate))
+			{
+				Date = americanNonPaddedDayDate;
+			}
+			//"1/01/19" -> January 1st 2019
+			else if (DateTime.TryParseExact(cheerText, "d/MM/yy", null, System.Globalization.DateTimeStyles.None, out var nonPaddedDayDate))
+			{
+				Date = nonPaddedDayDate;
+			}
+			else if (DateTime.TryParseExact(cheerText, "d/M/yy", null, System.Globalization.DateTimeStyles.None, out var thisDate))
+			{
 				Date = thisDate;
-
-			if (DateTime.TryParseExact(cheerText, "M/d/yy", null, System.Globalization.DateTimeStyles.None, out var americanDate))
+			}
+			else if (DateTime.TryParseExact(cheerText, "M/d/yy", null, System.Globalization.DateTimeStyles.None, out var americanDate))
+			{
 				Date = americanDate;
-
-			if (DateTime.TryParseExact(cheerText, "MMMM dd, yyyy", null, System.Globalization.DateTimeStyles.None, out var longDate))
-				Date = longDate;
-
-
+			}
+			//"January 29, 2019" or "November 29, 2018" on non english systems
+			else if (DateTime.TryParseExact(cheerText, "MMMM dd, yyyy", new System.Globalization.CultureInfo("en-US"), System.Globalization.DateTimeStyles.None, out var americanLongDate))
+			{
+				Date = americanLongDate;
+			}
 		}
 
 		/// <summary>
