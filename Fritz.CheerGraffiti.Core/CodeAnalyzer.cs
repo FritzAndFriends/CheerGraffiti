@@ -23,7 +23,9 @@ namespace Fritz.CheerGraffiti.Core
 
 			var outCheers = new List<Cheer>();
 
-			foreach (var node in commentNodes.Where(n => n.ToString().ToLowerInvariant().Contains("cheer")))
+			var nodesToAnalyze = commentNodes
+				.Where(n => n.ToString().ToLowerInvariant().Contains("cheer"));
+			foreach (var node in nodesToAnalyze)
 			{
 
 				outCheers.Add(new Cheer(node.ToString()));

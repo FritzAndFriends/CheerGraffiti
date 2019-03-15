@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28516.95
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fritz.CheerGraffiti.Core", "Fritz.CheerGraffiti.Core\Fritz.CheerGraffiti.Core.csproj", "{6C6792DF-2DF6-41C2-B164-F347E6BAA1C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fritz.CheerGraffiti.Core", "Fritz.CheerGraffiti.Core\Fritz.CheerGraffiti.Core.csproj", "{6C6792DF-2DF6-41C2-B164-F347E6BAA1C1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B8964616-1CBE-475A-8DF7-9BF33BD942F9}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		CheerSnippet.snippet = CheerSnippet.snippet
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.CheerGraffiti", "Test.CheerGraffiti\Test.CheerGraffiti.csproj", "{51020170-7FE6-4F26-9D39-89AFDAC3D4E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.CheerGraffiti", "Test.CheerGraffiti\Test.CheerGraffiti.csproj", "{51020170-7FE6-4F26-9D39-89AFDAC3D4E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheerGraffiti", "CheerGraffiti\CheerGraffiti.csproj", "{2377B490-148D-4E66-B444-672BFD9DB0F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{51020170-7FE6-4F26-9D39-89AFDAC3D4E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51020170-7FE6-4F26-9D39-89AFDAC3D4E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51020170-7FE6-4F26-9D39-89AFDAC3D4E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2377B490-148D-4E66-B444-672BFD9DB0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2377B490-148D-4E66-B444-672BFD9DB0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2377B490-148D-4E66-B444-672BFD9DB0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2377B490-148D-4E66-B444-672BFD9DB0F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
