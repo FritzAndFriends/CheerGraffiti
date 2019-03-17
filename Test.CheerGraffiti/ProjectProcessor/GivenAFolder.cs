@@ -34,7 +34,7 @@ namespace Test.CheerGraffiti.ProjectProcessor
 		{
 
 			var sut = new Core.ProjectProcessor();
-			var results = await sut.IdentifyFilesToProcess(_MyEmptyFolder.FullName);
+			var results = sut.IdentifyFilesToProcess(_MyEmptyFolder.FullName);
 
 			Assert.Empty(results);
 
@@ -45,7 +45,7 @@ namespace Test.CheerGraffiti.ProjectProcessor
 		{
 
 			var sut = new Core.ProjectProcessor();
-			var results = await sut.IdentifyFilesToProcess(_MyEmptyFolder.Name);
+			var results = sut.IdentifyFilesToProcess(_MyEmptyFolder.Name);
 
 			Assert.Empty(results);
 
@@ -56,7 +56,7 @@ namespace Test.CheerGraffiti.ProjectProcessor
 		{
 
 			var sut = new Core.ProjectProcessor();
-			var results = await sut.IdentifyFilesToProcess(_ThisSourceFolder.Name);
+			var results = sut.IdentifyFilesToProcess(_ThisSourceFolder.Name);
 
 			Assert.NotEmpty(results);
 
@@ -67,11 +67,11 @@ namespace Test.CheerGraffiti.ProjectProcessor
 		{
 
 			var sut = new Core.ProjectProcessor();
-			var results = await sut.IdentifyFilesToProcess(_ThisSourceFolder.FullName);
+
+			var results = sut.IdentifyFilesToProcess(_ThisSourceFolder.FullName);
 
 			Assert.NotEmpty(results);
 
 		}
-
 	}
 }

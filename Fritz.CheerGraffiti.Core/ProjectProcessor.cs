@@ -28,7 +28,17 @@ namespace Fritz.CheerGraffiti.Core
 		public IEnumerable<(string filename, IEnumerable<Cheer> cheers)> GetCheersForFiles(IEnumerable<string> files)
 		{
 
-			return null;
+			var outList = new List<(string filename, IEnumerable<Cheer> cheers)>();
+			var analyzer = new CodeAnalyzer();
+
+			foreach (var file in files)
+			{
+				var sr = new StreamReader(file);
+				outList.Add((file, analyzer.LocateCheersInFileContents(sr.ReadToEnd())));
+				sr.Dispose();
+			}
+
+			return outList;
 
 		}
 
