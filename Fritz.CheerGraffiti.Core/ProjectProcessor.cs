@@ -21,7 +21,8 @@ namespace Fritz.CheerGraffiti.Core
 
 			var thisFolder = new DirectoryInfo(projectFolder);
 
-			return thisFolder.GetFiles("*.cs", SearchOption.AllDirectories).Select(f => f.Name);
+			return thisFolder.GetFiles("*.cs", SearchOption.AllDirectories)
+				.Select(f => f.FullName);
 
 		}
 

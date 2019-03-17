@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using Fritz.CheerGraffiti.Core;
+using Fritz.CheerGraffiti.Core.Formatters;
 
 namespace CheerGraffiti
 {
@@ -17,6 +19,12 @@ namespace CheerGraffiti
 		{
 
 			Console.WriteLine($"The value for --path-to-project is: {pathToProject}");
+
+			var processor = new ProjectProcessor();
+			var files = processor.IdentifyFilesToProcess(pathToProject);
+			var report = processor.GetCheersForFiles(files);
+
+			new Markdown().FormatReport(report, "summarize.md");
 
 
 		}

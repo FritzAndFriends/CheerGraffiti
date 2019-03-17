@@ -59,6 +59,8 @@ namespace Fritz.CheerGraffiti.Core
 			}
 		}
 
+		public Cheer() { }
+
 		/// <summary>
 		/// User who cheered
 		/// </summary>
