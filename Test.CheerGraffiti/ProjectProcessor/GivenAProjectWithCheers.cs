@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using Xunit;
@@ -10,7 +9,7 @@ using Core = Fritz.CheerGraffiti.Core;
 namespace Test.CheerGraffiti.ProjectProcessor
 {
 
-	public class GivenAProjectWithCheers
+	public class GivenAProjectWithCheers : BaseFixture
 	{
 
 		private const string File1 = "TestFile1.cs";
@@ -37,26 +36,6 @@ namespace Test.CheerGraffiti.ProjectProcessor
 
 		}
 
-		private void ExtractTestFilesResource(string fileName)
-		{
-
-			if (File.Exists(fileName)) return;
-
-			var stream = GetType().Assembly.GetManifestResourceStream("Test.CheerGraffiti.TestFiles." + fileName);
-			var sw = new StreamWriter(fileName)
-			{
-				AutoFlush = true
-			};
-			var sr = new StreamReader(stream);
-
-			sw.Write(sr.ReadToEnd());
-			sw.Close();
-			sw.Dispose();
-			sr.Dispose();
-
-		}
-
 
 	}
-
 }

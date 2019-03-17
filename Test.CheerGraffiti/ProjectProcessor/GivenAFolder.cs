@@ -5,27 +5,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 using Core = Fritz.CheerGraffiti.Core;
 
 namespace Test.CheerGraffiti.ProjectProcessor
 {
-	public class GivenAFolder
+	public class GivenAFolder : BaseFixture
 	{
+		public ITestOutputHelper Outputhelper { get; }
+
 		private DirectoryInfo _MyEmptyFolder;
 		private readonly DirectoryInfo _ThisSourceFolder;
 
-		public GivenAFolder()
+		public GivenAFolder(ITestOutputHelper outputHelper)
 		{
+
+			this.Outputhelper = outputHelper;
+			outputHelper.WriteLine("Current working directory: " + Directory.GetCurrentDirectory());
 
 			_MyEmptyFolder = new DirectoryInfo("emptyFolder");
 			if (!_MyEmptyFolder.Exists) _MyEmptyFolder.Create();
 
-			var assemblyFolder = new FileInfo(GetType().Assembly.Location).Directory;
-			while (!assemblyFolder.GetFiles("*.csproj").Any())
-			{
-				assemblyFolder = assemblyFolder.Parent;
-			}
-			_ThisSourceFolder = assemblyFolder;
+			_ThisSourceFolder = new DirectoryInfo("sourceFolder");
+			if (!_ThisSourceFolder.Exists) _ThisSourceFolder.Create();
+			base.ExtractTestFilesResource("TestFile1.cs", _ThisSourceFolder.FullName);
+
+
 
 		}
 
