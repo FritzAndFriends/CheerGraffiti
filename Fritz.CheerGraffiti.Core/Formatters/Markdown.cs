@@ -9,6 +9,9 @@ namespace Fritz.CheerGraffiti.Core.Formatters
 
 	public class Markdown : IReportFormatter
 	{
+
+		// Cheer 100 animatedslinky 17/3/19 
+
 		public void FormatReport(IEnumerable<(string fileName, IEnumerable<Cheer> cheers)> cheerReport, string outputFileName)
 		{
 
